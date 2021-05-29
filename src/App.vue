@@ -2,23 +2,29 @@
   <div>
 		<h1>Witaj w systemie zapisów na zajęcia</h1>
 		<div v-if = "authenticatedEmail != ''">
-			<h2>Witaj {{authenticatedEmail}}</h2>
+			
+			<meeting-page></meeting-page>	
+			<h2>Witaj {{authenticatedEmail}}</h2>			
 			<button @click="logMeOut()">Wyloguj</button>
 		</div>
 		<div v-else>
 			<login-form @login="logMeIn($event)" button-label="Wejdź"></login-form>
 			<login-form @login="enter($event)" button-label="Wleć"></login-form>
 			<login-form @login="enter($event)" :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"></login-form>
-		</div>		
+			<login-form @login="logMeIn($event)"></login-form>
+		</div>	
+		<meetings-page></meetings-page>		
   </div>
 </template>
 
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
+import MeetingPage from "./meetings/MeetingPage";
+
 
 export default {
-	components: {LoginForm},
+	components: {LoginForm, MeetingPage},
 	data() {
 		return {
 

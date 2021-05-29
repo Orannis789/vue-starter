@@ -14,6 +14,11 @@ export default {
          email: ''
      }
  },
+ mounted() {
+  if (!this.buttonLabel) {
+    this.buttonLabel = 'Zaloguj się';
+  }
+},
  methods: {
      enter() {
          this.$emit('login', this.email);
